@@ -1,0 +1,56 @@
+---
+title: "Parcial1"
+author: "Ana Maria Cortes Salazar - Brayan Danilo Valero Salazar"
+date: '2022-03-25'
+output: html_document
+---
+## 1.La tabla mostrada contiene valores de población, en cientos de miles, de las diez ciudades más pobladas de cuatro países en el año 1967:
+```{r echo=FALSE}
+argentina = c(29.66, 7.61, 6.35, 4.10, 3.80, 2.75, 2.70, 2.69, 2.51, 2.44)
+eeuu = c(77.81, 35.50, 24.79, 20.02, 16.70, 9.39, 9.38, 8.76, 7.63, 7.50)
+holanda = c(8.68, 7.31, 6.02, 2.64, 1.75, 1.72, 1.51, 1.42, 1.31, 1.29)
+japon = c(110.21, 32.14, 18.88, 16.38, 13.37, 11.92, 10.71, 7.80, 7.70, 7.00)
+```
+```{r echo=FALSE}
+par(mfrow = c(2,2))
+boxplot(argentina,  col="purple", main = "Población de ciudades de Argentina", xlab = "Población",Xlim=c(0,30), horizontal = TRUE)
+boxplot(eeuu,  col="pink", main = "Población de ciudades de EEUU", xlab = "Población", horizontal = TRUE)
+boxplot(holanda,  col="blue", main = "Población de ciudades de Holanda", xlab = "Población", horizontal = TRUE)
+boxplot(japon,  col="yellow", main = "Población de ciudades de Japon", xlab = "Población", horizontal = TRUE)
+```
+
+## a.¿Cuáles son las características más sobresalientes? ¿Hay outliers?
+## Se puede observar que en la pobalcion de la ciudad e EEUU y Japon, existe un dato atipico (por fuera del la caja); tambien entre estas dos ciudades tienen el limite maximo en casi 40; tambien se puede observar otro dato atipico en la ciudad de de argentina; holanda es la ciudad que no tiene datos atipicos y que sus limites son mas pequeños que las otras ciudades. Existen Outlines en las ciudades de Argentina,Japon y EEUU
+## b.Compare los centros de cada población, sus dispersiones y su simetría. ¿Cuál es el país más homogéneamente habitado? ¿Cuáles son las características más sobresalientes? ¿Hay outliers?
+## La mayoria de centros de las graficas de las ciudades y sus poblaciones varian; las ciudades de japon y EEUU tienen una media muy cercana, mientras que la de holanda y argentina se asemeja mas; podemos observar que las ciudades de Argentina,EEUU y Holanda tienen una asimetria positiva pues su mediana esta mas inclinada a su lado izquierdo y en la cidad de japon se puede observar una asimetria de distribucion normal, apesar de que su grafica esta hacia la izquierda su mediana esta central; podemos observar que la ciudad con mas dispercion de datos en holanda, y la ciudad mas homogenea seria japon, pues no hay tanta dispersion de datos.
+
+## 2.. Avianca se encuentra estudiando la situación de venta de puesto en el vuelo Armenia – Bogotá puesto que ha identificado que el 2% de las personas que reservaron puesto, no se presentan a la hora del embarque. Teniendo en cuenta que el avión A320 utilizado en esta ruta tiene una capacidad para 180 pasajeros, la empresa decide vender 181 tiquetes. ¿Cuál es la probabilidad de que todas las personas que llegan a embarque puedan tener su silla asegurada y no se presenten quejas por “sobre-vender” sillas ante la aeronáutica civil? Asuma que las llegadas de los pasajeros siguen una distribución Poisson.
+
+```{r echo=FALSE}
+lambda <- 180 * 0.98
+q <- 180
+r <- ppois(q,lambda, lower.tail = TRUE)
+```
+```{r}
+r
+```
+
+## a. ¿Cuál es la probabilidad de que todas las personas que llegan a embarque puedan tener su silla asegurada y no se presenten quejas por “sobre-vender” sillas ante la aeronáutica civil? 
+## la probabilidad de que las personas que compraron su reserva en la aerolinea que sobre vendio un puesto de mas es de  0.6255%, viendo asi una probabilidad de que las personas puedan tener su sulla asegurada y no presentarse quejas, es una probabilidad relativamente alta.
+
+
+## 3.En la planta envasadora de Coca-Cola FEMSA ubicada en Tocancipá se realiza el embotellado de la CocaCola presentación de 400 mL (en promedio), con una desviación estándar de 5 mL (mililitros). Si se sabe por experiencia que este proceso de embotellado sigue una distribución normal, y también se sabe que todo producto con más de 415 mL es declarado como NO CONFORME. Determine el porcentaje de las botellas de gaseosa que son declaradas producto NO CONFORME.
+
+```{r echo=FALSE}
+media <- 400
+
+sd <- 5
+
+r <- pnorm(415,media,sd,lower.tail = FALSE)
+
+r1 = r * 100
+```
+```{r}
+r1
+```
+
